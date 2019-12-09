@@ -7,9 +7,10 @@ namespace DialogueSystem
     [System.Serializable]
     public struct DialogueLine
     {
-        public Actor speaker;
         [TextArea(3, 4)]
         public string dialogueText;
+        public Actor speaker;
+        
     }
 
     [System.Serializable]
@@ -24,8 +25,8 @@ namespace DialogueSystem
     [CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue System/New Dialogue")]
     public class Dialogue : ScriptableObject
     {
-        public Actor[] actorsOnTheLeft;
-        public Actor[] actorsOnTheRight;
+        public List<Actor> actorsOnTheLeft;
+        public List<Actor> actorsOnTheRight;
 
         [Header("Dialogue")]
         public DialogueLine[] dialogue;
