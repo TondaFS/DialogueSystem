@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015ab8ddbb332f04e9b5c007e37918e4, type: 3}
+  m_Name: Uvodni dialog
+  m_EditorClassIdentifier: 
+  actorsOnTheLeft:
+  - {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
+  actorsOnTheRight:
+  - {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
+  actions: []
+  dialogue:
+  - dialogueText: "<i>Toho dne se d\u011Bly <b>hodn\u011B</b> zvl\xE1\u0161tn\xED
+      v\u011Bci.</i>"
+    speaker: {fileID: 11400000, guid: a0357d6447d0d97418b6d705e29392bd, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: "Jsem to j\xE1, Ojochu! Tv\xE1 NEMESIS! P\u0159iprav se na smrt."
+    speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
+    audio: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: fd6fd00e86baeba4fb0aa23a531f1aa7, type: 2}
+    - {fileID: 11400000, guid: ae8ee746f0db24f4381ce6ae72c77447, type: 2}
+  - dialogueText: "A to jsem myslel, \u017Ee budu m\xEDt p\u0159ed sv\xE1tama klid."
+    speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  dialogueOptions:
+  - optionText: Dat mu facku
+    subsequentDialogue: {fileID: 11400000, guid: bd5b0af0ecd0eb542aeebad18bed177b,
+      type: 2}
+    actions:
+    - {fileID: 11400000, guid: d7e348c901df51f409a4dfa94fcc59c3, type: 2}
+    prerequisities: []
+  - optionText: "Ut\xE9ct"
+    subsequentDialogue: {fileID: 11400000, guid: 7688a82872777124ab8e033860bf6e48,
+      type: 2}
+    actions: []
+    prerequisities: []
+  - optionText: Mam to, vole?
+    subsequentDialogue: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: f8265249f8ad97a44bef8a6954604f4c, type: 2}
+    prerequisities:
+    - {fileID: 11400000, guid: 391ff3df33e5ab3448594943cc8b6d20, type: 2}

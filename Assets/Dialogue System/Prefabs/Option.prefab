@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tohle je prvn\xED mo\u017Enost rozhodnut\xED v dialogu."
+  m_Text: "Tohle je mo\u017Enost rozhodnut\xED v dialogu."
 --- !u!1 &1438373132346792015
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015ab8ddbb332f04e9b5c007e37918e4, type: 3}
+  m_Name: Zfackovan
+  m_EditorClassIdentifier: 
+  actorsOnTheLeft:
+  - {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
+  actorsOnTheRight:
+  - {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
+  - {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
+  actions:
+  - {fileID: 11400000, guid: 6d0454842183d5c44a70017473edffc9, type: 2}
+  dialogue:
+  - dialogueText: Au!
+    speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: Ty jsi takovy tyran, Ojochu!
+    speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: Nemas se chovat jak blbec.
+    speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: Jdu to nazalovat tvy mame!
+    speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: A sakra!
+    speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: Chichichi. Tady ma nekdo problem....
+    speaker: {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: "Ml\u010D ty, kryso!"
+    speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  - dialogueText: "Ale pro\u010D tak agresivn\u011B, kocoure, mo\u017En\xE1 bych ti
+      mohl n\u011Bjak pomoci.\nPokud by jsi m\u011Bl teda z\xE1jem."
+    speaker: {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
+    audio: {fileID: 0}
+    actions: []
+  dialogueOptions:
+  - optionText: "Mysl\xEDm, \u017Ee toho budu litovat, ale co nab\xEDz\xED\u0161,
+      kryso?"
+    subsequentDialogue: {fileID: 11400000, guid: 427d4ac2f19966e46a6a93747d496e4b,
+      type: 2}
+    actions: []
+  - optionText: "Ne d\xEDky, s krys\xE1kama neobchoduji."
+    subsequentDialogue: {fileID: 11400000, guid: b8528193334e94347a35970d356caf80,
+      type: 2}
+    actions: []
+  - optionText: "A co takhle prodat v\u0161echno na burze a d\xE1t si voraz?"
+    subsequentDialogue: {fileID: 11400000, guid: f83622023b7d56e4eaed37142620b9c2,
+      type: 2}
+    actions: []
+  - optionText: "J\xE1 ti nev\xEDm, m\u011B se to moc nel\xEDb\xED. Co takhle za\u010D\xEDt
+      znova? (RESTART)"
+    subsequentDialogue: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: e9a2df41e7894c74dac0f3c4f433c89a, type: 2}
