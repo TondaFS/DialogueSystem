@@ -10,18 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 015ab8ddbb332f04e9b5c007e37918e4, type: 3}
-  m_Name: crazy
+  m_Name: Crazy
   m_EditorClassIdentifier: 
   actorsOnTheLeft:
   - {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
   actorsOnTheRight:
   - {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
+  actions: []
   dialogue:
   - dialogueText: "Co\u017Ee?"
     speaker: {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
     audio: {fileID: 0}
+    actions: []
   - dialogueText: "Ale v\xED\u0161 co? Nech to bejt. Rad\u011Bji se sm\xED\u0159\xEDm
       se sv\xFDm osudem."
     speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
     audio: {fileID: 0}
-  dialogueOptions: []
+    actions: []
+  dialogueOptions:
+  - optionText: Restartovat hru
+    subsequentDialogue: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: e9a2df41e7894c74dac0f3c4f433c89a, type: 2}
+    prerequisities: []
+  - optionText: Konec
+    subsequentDialogue: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: 208d146b6679a234bb1dbec3b302d80c, type: 2}
+    prerequisities: []

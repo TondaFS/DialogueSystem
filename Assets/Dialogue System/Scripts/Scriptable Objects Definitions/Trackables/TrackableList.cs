@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Defines list of item of given Trackable items
+    /// Eg. - list of locations player visited
+    ///     - list of items in the inventory
+    /// </summary>
     [CreateAssetMenu(fileName = "Trackable List", menuName = "Dialogue System/Trackable/New Trackable List", order = 4)]
     public class TrackableList : ScriptableObject
     {

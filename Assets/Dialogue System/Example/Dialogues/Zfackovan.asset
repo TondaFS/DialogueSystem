@@ -24,15 +24,15 @@ MonoBehaviour:
     speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
     audio: {fileID: 0}
     actions: []
-  - dialogueText: Ty jsi takovy tyran, Ojochu!
+  - dialogueText: "Ty jsi takov\xFD tyran, Ojochu!"
     speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
     audio: {fileID: 0}
     actions: []
-  - dialogueText: Nemas se chovat jak blbec.
+  - dialogueText: "Hele, s\xE1m sis za\u010Dal."
     speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
     audio: {fileID: 0}
     actions: []
-  - dialogueText: Jdu to nazalovat tvy mame!
+  - dialogueText: "Jdu to na\u017Ealovat tv\xFD m\xE1m\u011B!"
     speaker: {fileID: 11400000, guid: 500820cf0767f4849a2d2dd57f569cd2, type: 2}
     audio: {fileID: 0}
     actions: []
@@ -40,7 +40,7 @@ MonoBehaviour:
     speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
     audio: {fileID: 0}
     actions: []
-  - dialogueText: Chichichi. Tady ma nekdo problem....
+  - dialogueText: "Chichichi. Tady m\xE1 n\u011Bkdo probl\xE9m..."
     speaker: {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
     audio: {fileID: 0}
     actions: []
@@ -59,16 +59,21 @@ MonoBehaviour:
     subsequentDialogue: {fileID: 11400000, guid: 427d4ac2f19966e46a6a93747d496e4b,
       type: 2}
     actions: []
+    prerequisities: []
   - optionText: "Ne d\xEDky, s krys\xE1kama neobchoduji."
     subsequentDialogue: {fileID: 11400000, guid: b8528193334e94347a35970d356caf80,
       type: 2}
     actions: []
+    prerequisities: []
   - optionText: "A co takhle prodat v\u0161echno na burze a d\xE1t si voraz?"
     subsequentDialogue: {fileID: 11400000, guid: f83622023b7d56e4eaed37142620b9c2,
       type: 2}
     actions: []
+    prerequisities: []
   - optionText: "J\xE1 ti nev\xEDm, m\u011B se to moc nel\xEDb\xED. Co takhle za\u010D\xEDt
       znova? (RESTART)"
     subsequentDialogue: {fileID: 0}
     actions:
     - {fileID: 11400000, guid: e9a2df41e7894c74dac0f3c4f433c89a, type: 2}
+    prerequisities:
+    - {fileID: 11400000, guid: 391ff3df33e5ab3448594943cc8b6d20, type: 2}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// List of all trackable types in the dialogue.
+    /// </summary>
     [CreateAssetMenu(fileName = "Trackables", menuName = "Dialogue System/Trackable/Trackables", order = 0)]
     public class Trackables : ScriptableObject
     {

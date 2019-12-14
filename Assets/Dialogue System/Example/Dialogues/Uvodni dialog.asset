@@ -29,25 +29,20 @@ MonoBehaviour:
     actions:
     - {fileID: 11400000, guid: fd6fd00e86baeba4fb0aa23a531f1aa7, type: 2}
     - {fileID: 11400000, guid: ae8ee746f0db24f4381ce6ae72c77447, type: 2}
-  - dialogueText: "A to jsem myslel, \u017Ee budu m\xEDt p\u0159ed sv\xE1tama klid."
+  - dialogueText: "A to jsem myslel, \u017Ee budu m\xEDt p\u0159ed sv\xE1tkama klid."
     speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
     audio: {fileID: 0}
     actions: []
   dialogueOptions:
-  - optionText: Dat mu facku
+  - optionText: "D\xE1t mu facku"
     subsequentDialogue: {fileID: 11400000, guid: bd5b0af0ecd0eb542aeebad18bed177b,
       type: 2}
     actions:
     - {fileID: 11400000, guid: d7e348c901df51f409a4dfa94fcc59c3, type: 2}
+    - {fileID: 11400000, guid: a4bc1728165183e43940d7d9cc9fc592, type: 2}
     prerequisities: []
   - optionText: "Ut\xE9ct"
     subsequentDialogue: {fileID: 11400000, guid: 7688a82872777124ab8e033860bf6e48,
       type: 2}
     actions: []
     prerequisities: []
-  - optionText: Mam to, vole?
-    subsequentDialogue: {fileID: 0}
-    actions:
-    - {fileID: 11400000, guid: f8265249f8ad97a44bef8a6954604f4c, type: 2}
-    prerequisities:
-    - {fileID: 11400000, guid: 391ff3df33e5ab3448594943cc8b6d20, type: 2}

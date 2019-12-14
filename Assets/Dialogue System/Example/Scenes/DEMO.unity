@@ -781,6 +781,8 @@ MonoBehaviour:
   alignTextToSpeakerSide: 0
   applySpeakerColorToDialogueLine: 0
   alignNonSideSpeakerToCenter: 0
+  showBothSpeakersAllTheTime: 0
+  clearAllTrackableItemsAtStart: 1
   leftSpeakerImage: {fileID: 866324710}
   leftSpeakerName: {fileID: 1531533494}
   rightSpeakerImage: {fileID: 1708508244}

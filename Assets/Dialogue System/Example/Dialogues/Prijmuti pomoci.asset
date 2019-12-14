@@ -16,12 +16,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
   actorsOnTheRight:
   - {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
+  actions: []
   dialogue:
-  - dialogueText: Je to jednoduche, Ojochu. Staci, kdyz vypnes hru a tva mama se to
-      nedozvi.
+  - dialogueText: "Je to jednoduch\xE9, Ojochu.Sta\u010D\xED kdy\u017E resetuje\u0161
+      hru a p\u0159\xED\u0161t\u011B vybere\u0161 jinou mo\u017Enost. Tv\xE1 m\xE1ma
+      pak nem\xE1 \u0161anci se to v\u016Fbec dozv\u011Bd\u011Bt.\nDobr\xFD, co?"
     speaker: {fileID: 11400000, guid: 298960dc1e68b1b4b8f500cc5884d1f0, type: 2}
     audio: {fileID: 0}
-  - dialogueText: Haha, vtipne. Prolomeni ctvrte zdi.
+    actions: []
+  - dialogueText: "Haha, vtipn\xE9. Ur\u010Dit\u011B to ud\u011Bl\xE1m."
     speaker: {fileID: 11400000, guid: 0576519db7acd014d82f4904badf7813, type: 2}
     audio: {fileID: 0}
-  dialogueOptions: []
+    actions: []
+  dialogueOptions:
+  - optionText: Restartovat hru
+    subsequentDialogue: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: e9a2df41e7894c74dac0f3c4f433c89a, type: 2}
+    prerequisities: []
+  - optionText: Konec
+    subsequentDialogue: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: 208d146b6679a234bb1dbec3b302d80c, type: 2}
+    prerequisities: []

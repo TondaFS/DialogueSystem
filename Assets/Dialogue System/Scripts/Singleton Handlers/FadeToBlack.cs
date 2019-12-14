@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Class handles fade in and fade out of the black bacground in the scene
+    /// </summary>
     public class FadeToBlack : MonoBehaviour
     {
         public static FadeToBlack Instance;
@@ -27,21 +30,32 @@ namespace DialogueSystem
 
             _canvas = GetComponent<CanvasRenderer>();
         }
-
+        /// <summary>
+        /// Fades in the canvas until its fully visible.
+        /// </summary>
         public void StartFadeIn()
         {
             StartCoroutine(FadeIn(false, false));
         }
+        /// <summary>
+        /// Fade out the canvas until its invisible.
+        /// </summary>
         public void StartFadeOut()
         {
             StartCoroutine(FadeOut());
         }
-        
+        /// <summary>
+        /// Fades in navas and then quits the game.
+        /// </summary>
         public void FadeInAndQuit()
         {
             StartCoroutine(FadeIn(false, true));
 
         }
+        /// <summary>
+        /// Fades in the canvas and loads new scene
+        /// </summary>
+        /// <param name="sceneName"></param>
         public void FadeInAndLoadNewScene(string sceneName)
         {
             newSceneName = sceneName;

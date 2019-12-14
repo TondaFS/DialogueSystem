@@ -5,14 +5,23 @@ using UnityEngine.UI;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Class manages all conversation in the scene. Has reference to starting dialogue, all UI objects in the scene and trackable lists.
+    /// </summary>
     public class Conversation : MonoBehaviour
     {
         public static Conversation Instance;
 
         public delegate void ConversationAction();
+        /// <summary>
+        /// Event raised when the converastion ends and no other buttons or actions are left/set
+        /// </summary>
         public static event ConversationAction ConversationEnded;
         
         public Dialogue startingDialogue;
+        /// <summary>
+        /// Lists of all trackable items in the scene.
+        /// </summary>
         public Trackables trackableThings;
 
         [Tooltip("If unchecked the text is aligned to the left.")]
@@ -23,6 +32,12 @@ namespace DialogueSystem
 
         [Tooltip("If unchecked the text is aligned to the left.")]
         public bool alignNonSideSpeakerToCenter = true;
+
+        [Tooltip("If unchecked only the current speake is shown.")]
+        public bool showBothSpeakersAllTheTime = false;
+
+        [Tooltip("If unchecked current trackables in 'inventory' won't be erased, allowing to set initial items or keep same items between scenes.")]
+        public bool clearAllTrackableItemsAtStart = true;
 
         [Header("UI Elements")]
         [Space(5)]
@@ -62,22 +77,41 @@ namespace DialogueSystem
                 return;
             }
 
+            //finds necessary references
             _fadeToBlack = FindObjectOfType<FadeToBlack>();
             _dialogueAudioSource = GetComponent<AudioSource>();
             if (_dialogueAudioSource == null)
                 _dialogueAudioSource = this.gameObject.AddComponent<AudioSource>();
         }
 
+        /// <summary>
+        /// Prepares the scene
+        /// </summary>
         private void Start()
         {
             currentDialogue = startingDialogue;
-            leftSpeakerImage.gameObject.SetActive(false);
-            rightSpeakerImage.gameObject.SetActive(false);
-            leftSpeakerName.gameObject.SetActive(false);
-            rightSpeakerName.gameObject.SetActive(false);
+                        
+            if (!showBothSpeakersAllTheTime)
+            {
+                leftSpeakerImage.gameObject.SetActive(false);
+                rightSpeakerImage.gameObject.SetActive(false);
+                leftSpeakerName.gameObject.SetActive(false);
+                rightSpeakerName.gameObject.SetActive(false);
+            }
+            else
+            {
+                leftSpeakerImage.gameObject.SetActive(true);
+                rightSpeakerImage.gameObject.SetActive(true);
+                leftSpeakerName.gameObject.SetActive(true);
+                rightSpeakerName.gameObject.SetActive(true);
+            }
+
             nextButton.SetActive(false);
             dialogueText.text = "";
-            optionButtons = new List<GameObject>();            
+            optionButtons = new List<GameObject>();
+
+            if (clearAllTrackableItemsAtStart)
+                trackableThings.ClearAllTrackables();
 
             PrepareNextDialogues();
             ShowNextDialogueLine();
@@ -85,6 +119,7 @@ namespace DialogueSystem
             _fadeToBlack.StartFadeOut();
         }
 
+        //Register to button events
         private void OnEnable()
         {
             ContinueButton.ContinueButtonClicked += OnContinueButtonClick;
@@ -102,6 +137,10 @@ namespace DialogueSystem
         {
             ShowNextDialogueLine();
         }
+        /// <summary>
+        /// When user clicks option button, execute all choice actions and then prepares new dialogue if there is any
+        /// </summary>
+        /// <param name="id">position of the choice in the array</param>
         private void OnDialogueOptionClicked(int id)
         {
             for (int i = optionButtons.Count- 1; i >= 0; i--)
@@ -114,7 +153,7 @@ namespace DialogueSystem
 
             if (option.actions != null)
                 ExecuteAllDialogueActions(option.actions);
-
+                        
             if (option.subsequentDialogue != null)
             {
                 currentDialogue = option.subsequentDialogue;
@@ -123,6 +162,9 @@ namespace DialogueSystem
             }
         }
 
+        /// <summary>
+        /// Add all dialogue lines to the queue and executes all starting dialogue actions.
+        /// </summary>
         private void PrepareNextDialogues()
         {
             lines = new Queue<DialogueLine>();
@@ -135,7 +177,9 @@ namespace DialogueSystem
                 ExecuteAllDialogueActions(currentDialogue.actions);
         }
 
-
+        /// <summary>
+        /// Shows the next dialogue line if there is any and option buttons if we hit the end of dialogue.
+        /// </summary>
         private void ShowNextDialogueLine()
         {
             if (lines.Count == 0)
@@ -154,6 +198,7 @@ namespace DialogueSystem
             {
                 nextButton.SetActive(true);
             }
+            //we are at the end of the dialogue, shows options
             else
             {
                 nextButton.SetActive(false);
@@ -163,6 +208,7 @@ namespace DialogueSystem
                     return;
                 }
 
+                //show each option in dialogue
                 for (int i = 0; i < currentDialogue.dialogueOptions.Length; i++)
                 {        
                     DialogueOption opt = currentDialogue.dialogueOptions[i];
@@ -180,6 +226,11 @@ namespace DialogueSystem
             }
         }
 
+        /// <summary>
+        /// Checks if the the given list of items is in the players 'inventory'.
+        /// </summary>
+        /// <param name="items">List of trackable items needed to be in players inventory.</param>
+        /// <returns></returns>
         private bool DoesMeetPrerequisities(List<TrackableItem> items)
         {
             for (int i = 0; i < items.Count; i++)
@@ -191,6 +242,10 @@ namespace DialogueSystem
             return true;
         }
 
+        /// <summary>
+        /// Shows the dialogue text, aligns text according the speaker if needed and changes color.
+        /// </summary>
+        /// <param name="dl">Dialogue line to be shown.</param>
         private void SetDialogueWindow(DialogueLine dl)
         {
             dialogueText.text = dl.dialogueText;
@@ -206,6 +261,7 @@ namespace DialogueSystem
             //we want to make sure the text size container will be calculated for our text
             LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueText.rectTransform);
 
+            //shows or hides speakers in the dialogue, changes their color and text anchor
             if (currentDialogue.actorsOnTheLeft.Contains(dl.speaker))
             {
                 if (alignTextToSpeakerSide)
@@ -215,11 +271,14 @@ namespace DialogueSystem
                 leftSpeakerName.text = dl.speaker.actorName;
                 leftSpeakerName.color = dl.speaker.dialogueColor;
 
-                leftSpeakerImage.gameObject.SetActive(true);
-                leftSpeakerName.gameObject.SetActive(true);
-                rightSpeakerImage.gameObject.SetActive(false);
-                rightSpeakerName.gameObject.SetActive(false);
+                if (!showBothSpeakersAllTheTime)
+                {
+                    leftSpeakerImage.gameObject.SetActive(true);
+                    leftSpeakerName.gameObject.SetActive(true);
 
+                    rightSpeakerImage.gameObject.SetActive(false);
+                    rightSpeakerName.gameObject.SetActive(false);
+                }
             }
             else if (currentDialogue.actorsOnTheRight.Contains(dl.speaker))
             {
@@ -229,25 +288,34 @@ namespace DialogueSystem
                 rightSpeakerImage.sprite = dl.speaker.image;
                 rightSpeakerName.text = dl.speaker.actorName;
                 rightSpeakerName.color = dl.speaker.dialogueColor;
-                leftSpeakerImage.gameObject.SetActive(false);
-                leftSpeakerName.gameObject.SetActive(false);
-                rightSpeakerImage.gameObject.SetActive(true);
-                rightSpeakerName.gameObject.SetActive(true);
+
+                if (!showBothSpeakersAllTheTime)
+                {
+                    leftSpeakerImage.gameObject.SetActive(false);
+                    leftSpeakerName.gameObject.SetActive(false);
+                    rightSpeakerImage.gameObject.SetActive(true);
+                    rightSpeakerName.gameObject.SetActive(true);
+                }
             }
             else
             {
                 if (alignNonSideSpeakerToCenter)
                     dialogueText.alignment = TextAnchor.UpperCenter;
 
-                leftSpeakerImage.gameObject.SetActive(false);
-                leftSpeakerName.gameObject.SetActive(false);
-                rightSpeakerImage.gameObject.SetActive(false);
-                rightSpeakerName.gameObject.SetActive(false);
+                if (!showBothSpeakersAllTheTime)
+                {
+                    leftSpeakerImage.gameObject.SetActive(false);
+                    leftSpeakerName.gameObject.SetActive(false);
+                    rightSpeakerImage.gameObject.SetActive(false);
+                    rightSpeakerName.gameObject.SetActive(false);
+                }
             }
 
+            //stop audio sound if there is any
             if (_dialogueAudioSource.isPlaying)
                 _dialogueAudioSource.Stop();
 
+            //play audio if there is any
             if (dl.audio != null)
             {
                 _dialogueAudioSource.clip = dl.audio;
@@ -255,6 +323,10 @@ namespace DialogueSystem
             }
         }
 
+        /// <summary>
+        /// Do all actions in the list
+        /// </summary>
+        /// <param name="actions">list of actions needed to be executed</param>
         private void ExecuteAllDialogueActions(List<DialogueAction> actions)
         {
             foreach (DialogueAction act in actions)
